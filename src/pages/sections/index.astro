@@ -1,0 +1,193 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionCard from '../../components/SectionCard.astro';
+import siteData from '../../data/siteData.json';
+---
+
+<Layout
+  title="Our Sections – 3rd/40th/41st Dublin, Donnybrook Scout Group"
+  description="Explore all 7 active sections in Donnybrook Scout Group across Beavers, Cubs, Scouts, Ventures, and Rovers, with weekly meeting times and leader contacts."
+>
+  <Hero
+    title="Our Sections"
+    subtitle="Donnybrook has 7 active sections, 6 of whom meet weekly to plan activities and prepare for upcoming camps."
+    eyebrow="Ages 6 to 26 • Brookvale Road"
+    image="/images/hero-sections.jpg"
+    minHeight="360px"
+  />
+
+  <!-- Section Age Groups -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Age-Based Scouting</span>
+        <h2>Five Progressive Youth Sections</h2>
+        <p>
+          Young people progress through our sections from age 6 right through to age 26, building
+          independence, friendships, and outdoor leadership at every stage.
+        </p>
+      </div>
+
+      <div class="sections-grid">
+        {siteData.sections.map((section) => (
+          <SectionCard
+            title={section.name}
+            ageRange={section.ageRange}
+            description={section.shortDescription}
+            href={`/sections/${section.slug}`}
+            icon={section.icon}
+            accentColor={section.accentColor}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Weekly Timetable & Leader Directory -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Weekly Schedule &amp; Contacts</span>
+        <h2>All 7 Active Units</h2>
+        <p>
+          All weekly sections meet at The Scout Hall, Brookvale Road, Donnybrook, Dublin 4
+          (D04 PV32) during school terms.
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        {siteData.units.map((unit) => (
+          <article class="card unit-row-card">
+            <div class="card-body unit-row-body">
+              <div class="unit-row-icon">
+                <img src={unit.icon} alt={`${unit.name} crest`} width="54" height="54" loading="lazy" />
+              </div>
+              <div class="unit-row-info">
+                <div class="unit-row-top">
+                  <h3>
+                    <a href={`/sections/${unit.sectionSlug}`}>{unit.name}</a>
+                  </h3>
+                  <span class="badge">{unit.ages}</span>
+                </div>
+                <p class="unit-schedule">
+                  <strong>{unit.day}:</strong> {unit.time}
+                </p>
+                <p class="unit-contact">
+                  Leader Email:{' '}
+                  <a href={`mailto:${unit.email}`}>{unit.email}</a>
+                </p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="container cta-strip-inner">
+      <div>
+        <h2>Ready to Start Your Scouting Journey?</h2>
+        <p>Submit a youth or adult volunteer application online or ask about our waiting list.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/join-us" class="btn btn-red btn-lg">Apply to Join</a>
+        <a href="/contact" class="btn btn-outline-white btn-lg">Contact Leaders</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sections-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .sections-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sections-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .unit-row-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+  }
+
+  .unit-row-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    padding: 0.35rem;
+    background: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .unit-row-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .unit-row-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .unit-row-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .unit-row-top h3 {
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .unit-row-top h3 a {
+    color: var(--color-darker);
+  }
+
+  .unit-row-top h3 a:hover {
+    color: var(--color-scout-red);
+  }
+
+  .unit-schedule {
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
+  }
+
+  .unit-contact {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    word-break: break-word;
+  }
+
+  .unit-contact a {
+    font-weight: 700;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+</style>

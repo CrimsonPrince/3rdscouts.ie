@@ -1,0 +1,160 @@
+---
+interface Props {
+  title: string;
+  ageRange: string;
+  description: string;
+  href: string;
+  icon: string;
+  accentColor?: string;
+  scheduleSummary?: string;
+  email?: string;
+}
+
+const {
+  title,
+  ageRange,
+  description,
+  href,
+  icon,
+  accentColor = '#446084',
+  scheduleSummary,
+  email,
+} = Astro.props;
+---
+
+<article class="card section-card" style={`--card-accent: ${accentColor};`}>
+  <div class="section-card-top"></div>
+  <div class="card-body section-card-body">
+    <div class="section-card-header">
+      <div class="section-icon-wrap">
+        <img src={icon} alt={`${title} icon`} width="52" height="52" loading="lazy" />
+      </div>
+      <div>
+        <span class="section-age">{ageRange}</span>
+        <h3 class="section-title">{title}</h3>
+      </div>
+    </div>
+
+    <p class="section-desc">{description}</p>
+
+    {scheduleSummary && (
+      <p class="section-meta">
+        <strong>Meetings:</strong> {scheduleSummary}
+      </p>
+    )}
+
+    {email && (
+      <p class="section-meta">
+        <strong>Contact:</strong>{' '}
+        <a href={`mailto:${email}`}>{email}</a>
+      </p>
+    )}
+
+    <div class="section-card-footer">
+      <a href={href} class="section-link">
+        Explore {title}
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .section-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .section-card-top {
+    height: 5px;
+    background-color: var(--card-accent);
+  }
+
+  .section-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.85rem;
+  }
+
+  .section-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .section-icon-wrap {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    padding: 0.35rem;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .section-icon-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .section-age {
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--card-accent);
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  .section-desc {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  .section-meta {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  .section-meta a {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .section-card-footer {
+    margin-top: auto;
+    padding-top: 0.65rem;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-primary);
+  }
+
+  .section-link:hover {
+    color: var(--color-scout-red);
+    gap: 0.65rem;
+  }
+</style>

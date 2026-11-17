@@ -1,0 +1,416 @@
+---
+import siteData from '../data/siteData.json';
+
+interface Props {
+  transparent?: boolean;
+  currentPath?: string;
+}
+
+const { transparent = false, currentPath = '/' } = Astro.props;
+
+const isActive = (path: string) => {
+  if (path === '/') return currentPath === '/';
+  return currentPath === path || currentPath.startsWith(`${path}/`);
+};
+
+const sectionLinks = [
+  { label: 'All Sections', href: '/sections' },
+  { label: 'Beavers (6–8)', href: '/sections/beavers' },
+  { label: 'Cubs (9–11)', href: '/sections/cubs' },
+  { label: 'Scouts (12–15)', href: '/sections/scouts' },
+  { label: 'Ventures (15–18)', href: '/sections/ventures' },
+  { label: 'Rovers (18–26)', href: '/sections/rovers' },
+];
+---
+
+<header class:list={['site-header', { 'site-header--transparent': transparent }]}>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span class="topbar-badge">All the Red Ties</span>
+        <span class="topbar-text">{siteData.group.name} • Est. {siteData.group.founded}</span>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-location">{siteData.group.shortAddress}</span>
+        <a href={`mailto:${siteData.group.emails.groupLeader}`} class="topbar-email">
+          {siteData.group.emails.groupLeader}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="masthead">
+    <div class="container masthead-inner">
+      <a href="/" class="brand-link" aria-label="3rd Donnybrook Scout Group Home">
+        <img
+          src={transparent ? '/images/logo-pale.png' : '/images/logo.png'}
+          alt="3/40/41 Dublin, Donnybrook Scout Group"
+          width="216"
+          height="80"
+          class="brand-logo"
+        />
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li>
+            <a href="/" class:list={['nav-link', { 'is-active': isActive('/') }]}>Home</a>
+          </li>
+          <li>
+            <a href="/about" class:list={['nav-link', { 'is-active': isActive('/about') }]}>About Us</a>
+          </li>
+          <li class="nav-dropdown-item">
+            <a
+              href="/sections"
+              class:list={['nav-link nav-dropdown-trigger', { 'is-active': isActive('/sections') }]}
+            >
+              Sections
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <ul class="nav-dropdown" aria-label="Scout Sections">
+              {sectionLinks.map((item) => (
+                <li>
+                  <a href={item.href} class:list={['dropdown-link', { 'is-active': currentPath === item.href }]}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <a href="/volunteering" class:list={['nav-link', { 'is-active': isActive('/volunteering') }]}>
+              Volunteering
+            </a>
+          </li>
+          <li>
+            <a href="/our-hall" class:list={['nav-link', { 'is-active': isActive('/our-hall') }]}>
+              Our Scout Hall
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class:list={['nav-link', { 'is-active': isActive('/contact') }]}>
+              Contact Us
+            </a>
+          </li>
+          <li>
+            <a href="/join-us" class="btn btn-red nav-cta">Join Us</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button
+        type="button"
+        class="mobile-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav-drawer"
+        data-nav-toggle
+      >
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav-drawer" class="mobile-drawer" hidden>
+    <nav class="container mobile-drawer-nav" aria-label="Mobile Navigation">
+      <a href="/" class="mobile-link">Home</a>
+      <a href="/about" class="mobile-link">About Us</a>
+      <div class="mobile-group">
+        <a href="/sections" class="mobile-link mobile-link--parent">Sections</a>
+        <div class="mobile-sublinks">
+          {sectionLinks.slice(1).map((item) => (
+            <a href={item.href} class="mobile-sublink">{item.label}</a>
+          ))}
+        </div>
+      </div>
+      <a href="/volunteering" class="mobile-link">Volunteering</a>
+      <a href="/our-hall" class="mobile-link">Our Scout Hall</a>
+      <a href="/contact" class="mobile-link">Contact Us</a>
+      <a href="/join-us" class="btn btn-red mobile-cta">Join Us</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.querySelector('[data-nav-toggle]');
+  const drawer = document.getElementById('mobile-nav-drawer');
+
+  if (toggleBtn && drawer) {
+    toggleBtn.addEventListener('click', () => {
+      const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!expanded));
+      drawer.hidden = expanded;
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  }
+
+  .site-header--transparent {
+    position: relative;
+    background-color: #162131;
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .topbar {
+    background-color: var(--color-topbar);
+    color: #ffffff;
+    font-size: 0.8rem;
+    padding-block: 0.42rem;
+  }
+
+  .topbar-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+  }
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+  }
+
+  .topbar-badge {
+    background-color: var(--color-scout-red);
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radius-pill);
+  }
+
+  .topbar-text {
+    font-weight: 700;
+  }
+
+  .topbar-right {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .topbar-email {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .topbar-email:hover {
+    color: #e2e8f0;
+  }
+
+  @media (min-width: 768px) {
+    .topbar-right {
+      display: flex;
+    }
+  }
+
+  .masthead {
+    padding-block: 0.65rem;
+  }
+
+  .masthead-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand-link {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .brand-logo {
+    height: 58px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  @media (min-width: 768px) {
+    .brand-logo {
+      height: 66px;
+    }
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 992px) {
+    .desktop-nav {
+      display: block;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.55rem 0.78rem;
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-darker);
+    border-radius: var(--radius-sm);
+  }
+
+  .site-header--transparent .nav-link {
+    color: #f8fafc;
+  }
+
+  .nav-link:hover,
+  .nav-link.is-active {
+    color: var(--color-scout-red);
+  }
+
+  .site-header--transparent .nav-link:hover,
+  .site-header--transparent .nav-link.is-active {
+    color: #fca5a5;
+  }
+
+  .nav-dropdown-item {
+    position: relative;
+  }
+
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 215px;
+    list-style: none;
+    margin: 0;
+    padding: 0.45rem 0;
+    background-color: var(--color-scout-red);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    z-index: 200;
+  }
+
+  .nav-dropdown-item:hover .nav-dropdown,
+  .nav-dropdown-item:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 0.55rem 1rem;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .dropdown-link:hover,
+  .dropdown-link.is-active {
+    background-color: rgba(0, 0, 0, 0.18);
+    color: #ffffff;
+  }
+
+  .nav-cta {
+    margin-left: 0.45rem;
+    padding: 0.52rem 1.2rem;
+    font-size: 0.82rem;
+  }
+
+  .mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-darker);
+    cursor: pointer;
+  }
+
+  .site-header--transparent .mobile-toggle {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+  }
+
+  @media (min-width: 992px) {
+    .mobile-toggle {
+      display: none;
+    }
+  }
+
+  .mobile-drawer {
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-border);
+    padding-block: 1rem 1.5rem;
+  }
+
+  .mobile-drawer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .mobile-link {
+    display: block;
+    padding: 0.6rem 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.92rem;
+    color: var(--color-darker);
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .mobile-sublinks {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .mobile-sublink {
+    padding: 0.42rem 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .mobile-cta {
+    margin-top: 0.75rem;
+    width: 100%;
+  }
+</style>

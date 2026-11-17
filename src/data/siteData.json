@@ -1,0 +1,382 @@
+{
+  "forms": {
+    "appsScriptUrl": ""
+  },
+  "group": {
+    "name": "3rd/40th/41st Dublin, Donnybrook Scout Group",
+    "shortName": "Donnybrook Scout Group",
+    "tagline": "All the Red Ties",
+    "founded": 1927,
+    "chyId": "20206351",
+    "memberCount": "~200",
+    "ageRange": "6–26",
+    "address": "The Scout Hall, Brookvale Road, Donnybrook, Dublin, D04 PV32",
+    "shortAddress": "Brookvale Road, Donnybrook, Dublin 4",
+    "emails": {
+      "groupLeader": "donnybrookgroupleader@gmail.com",
+      "apply": "apply@donnybrookleaders.com"
+    },
+    "social": {
+      "facebook": "https://www.facebook.com/donnybrookscouts",
+      "instagram": "https://www.instagram.com/donnybrookscouts"
+    },
+    "footerSummary": "We are the 3rd/40th/41st Dublin, Donnybrook Scout Group. We are a large Group that delivers Scouting to young people from 6–26."
+  },
+  "announcements": [
+    {
+      "id": "oiche-na-hoige-beavers",
+      "badge": "Upcoming Event • Oíche na hÓige",
+      "title": "Beaver Scouts \"Come Try It Night\"",
+      "description": "Donnybrook Scouts invites children aged 5–8 to our Beaver Scouts \"Come Try It Night\" for Oíche na hÓige! Beavers is the youngest section of Scouting—a place where kids can make lifelong friends, learn new skills, build confidence, and create unforgettable memories through fun, structured activities.",
+      "date": "Friday, 13th November",
+      "time": "6:00 p.m.",
+      "location": "Donnybrook Scout Hall (Brookvale Road, Donnybrook, D04 PV32)",
+      "who": "Children aged 5–8",
+      "ctaLabel": "Sign Up Here",
+      "ctaUrl": "https://forms.gle/m9Fmq7aj6Vw53Ehs5",
+      "image": "/images/oiche-na-hoige.png"
+    },
+    {
+      "id": "centenary-2027",
+      "badge": "Centenary Milestone • 1927–2027",
+      "title": "Approaching Our Historic 100th Year",
+      "description": "Founded in 1927 as one of the first troops in the Dublin community, Donnybrook Scout Group is preparing an action-packed calendar of activities and events to celebrate a century of All the Red Ties.",
+      "ctaLabel": "Read Our History",
+      "ctaUrl": "/about"
+    }
+  ],
+  "units": [
+    {
+      "id": "orion-beavers",
+      "name": "Orion Beavers",
+      "sectionSlug": "beavers",
+      "sectionLabel": "Beavers",
+      "ages": "Ages 6–8",
+      "day": "Wednesday",
+      "time": "6:30pm – 7:30pm",
+      "detailTime": "Every Wednesday from 6:30–7:45pm at our Scout Hall",
+      "email": "orionbeavers@gmail.com",
+      "icon": "/images/beaver-scouts.jpg"
+    },
+    {
+      "id": "oisin-beavers",
+      "name": "Oisín Beavers",
+      "sectionSlug": "beavers",
+      "sectionLabel": "Beavers",
+      "ages": "Ages 6–8",
+      "day": "Thursday",
+      "time": "6:30pm – 7:30pm",
+      "detailTime": "Every Thursday from 6:30–7:45pm at our Scout Hall",
+      "email": "oisinbeavers@gmail.com",
+      "icon": "/images/beaver-icon.png"
+    },
+    {
+      "id": "celt-cubs",
+      "name": "Celt Cub Pack",
+      "sectionSlug": "cubs",
+      "sectionLabel": "Cubs",
+      "ages": "Ages 9–11",
+      "day": "Monday",
+      "time": "7:00pm – 8:30pm",
+      "detailTime": "Mondays from 7:00pm – 8:30pm",
+      "email": "celtcubs@gmail.com",
+      "icon": "/images/cub-icon.png"
+    },
+    {
+      "id": "viking-cubs",
+      "name": "Viking Cub Pack",
+      "sectionSlug": "cubs",
+      "sectionLabel": "Cubs",
+      "ages": "Ages 9–11",
+      "day": "Tuesday",
+      "time": "7:00pm – 8:30pm",
+      "detailTime": "Tuesday nights from 7:00pm – 8:30pm",
+      "email": "vikingcubpack@gmail.com",
+      "icon": "/images/cub-icon.png"
+    },
+    {
+      "id": "3rd-scouts",
+      "name": "3rd Scout Troop",
+      "sectionSlug": "scouts",
+      "sectionLabel": "Scouts",
+      "ages": "Ages 12–15",
+      "day": "Thursday",
+      "time": "7:45pm – 9:30pm",
+      "detailTime": "Weekly on Thursdays from 7:45pm – 9:30pm",
+      "email": "3rdscoutsdonnybrook@gmail.com",
+      "icon": "/images/scout-icon.png"
+    },
+    {
+      "id": "dvg",
+      "name": "Donnybrook Venture Group (DVG)",
+      "sectionSlug": "ventures",
+      "sectionLabel": "Ventures",
+      "ages": "Ages 15–18",
+      "day": "Thursday",
+      "time": "8:00pm – 9:30pm",
+      "detailTime": "Thursdays from 8:00pm – 9:30pm",
+      "email": "venturesdonnybrook@gmail.com",
+      "icon": "/images/venture-icon.png"
+    },
+    {
+      "id": "drc",
+      "name": "Donnybrook Rover Crew (DRC)",
+      "sectionSlug": "rovers",
+      "sectionLabel": "Rovers",
+      "ages": "Ages 18–26",
+      "day": "Monthly / Ad-hoc",
+      "time": "Project & Crew Based",
+      "detailTime": "Regular monthly events and project-based crews around Scouter schedules",
+      "email": "apply@donnybrookleaders.com",
+      "icon": "/images/rover-icon.png"
+    }
+  ],
+  "sections": [
+    {
+      "slug": "beavers",
+      "name": "Beavers",
+      "heading": "Beavers",
+      "ageRange": "Ages 6–8",
+      "accentColor": "#006ddf",
+      "icon": "/images/beaver-icon.png",
+      "heroImage": "/images/beavers-hero.jpg",
+      "shortDescription": "Scouting Ireland's youngest section for ages 6–8, focusing on fun, friendship, games, and first outdoor adventures across two Colonies.",
+      "introParagraphs": [
+        "Beaver Scouts are Scouting Ireland’s youngest age group. They run from aged 6 up until a child’s 9th birthday where they link to Cub Scouts.",
+        "A Group of Beaver Scouts is called a Colony, and Beavers form small groups within the Colony called Lodges. Each Lodge normally also has a Lodge Leader, an older Beaver who can help to support and guide the others.",
+        "Donnybrook Scout Group currently operates two Beaver colonies."
+      ],
+      "units": [
+        {
+          "name": "Orion Beavers",
+          "description": "Orion Beavers meet every Wednesday from 6.30pm–7.30pm (up to 7.45pm) at our Scout Hall.",
+          "email": "orionbeavers@gmail.com",
+          "icon": "/images/beaver-scouts.jpg"
+        },
+        {
+          "name": "Oisín Beavers",
+          "description": "Oisin Beavers meet every Thursday from 6.30pm–7.30pm (up to 7.45pm) at our Scout Hall.",
+          "email": "oisinbeavers@gmail.com",
+          "icon": "/images/beaver-icon.png"
+        }
+      ],
+      "whatTheyDoTitle": "What do Beavers Do?",
+      "whatTheyDoParagraphs": [
+        "Our Beaver Colonies meet once a week during school terms. At meetings they play team games and learn Scouting skills like hiking, camping, knots, first aid, cooking and more.",
+        "Beavers go on outdoor adventures – walks, treasure hunts, one or two night camps, litter-picking, parading on Saint Patrick’s Day, slumber parties in Scout Dens and more."
+      ],
+      "whatTheyDoImage": "/images/beavers-1.jpg",
+      "activitiesTitle": "How often do Beavers go on activities?",
+      "activitiesParagraphs": [
+        "Our Beaver Colonies are very active. They normally go on overnights to local Scout Dens once or twice a year. All of this is done to prepare them for a big camp for two nights, normally in May or June.",
+        "In between their camps, Beavers will do activities down in the hall, go on hikes, participate in events with the wider Group and much more. You can typically expect a Beaver activity every 6 weeks."
+      ],
+      "activitiesImage": "/images/beavers-2.jpg",
+      "ctaTitle": "Interested in Joining our Beavers?"
+    },
+    {
+      "slug": "cubs",
+      "name": "Cubs",
+      "heading": "Cubs",
+      "ageRange": "Ages 9–11",
+      "accentColor": "#eab308",
+      "icon": "/images/cub-icon.png",
+      "heroImage": "/images/cubs-hero.jpg",
+      "shortDescription": "For ages 9–11, building teamwork in Sixes through hill walks, camping, cooking, knots, and our annual Pack Holiday across two Packs.",
+      "introParagraphs": [
+        "Cub Scouts is Scouting Ireland’s second age group. They run from age 9 up to a child’s 12th birthday where they link to Scouts.",
+        "A Group of Cubs is called a Pack, and within the Pack there are normally small Groups called “Sixes”. Each Six will have a Sixer, usually an older child who is able to guide and support the others, and a Seconder to assist the Sixer.",
+        "Donnybrook has two Cub packs in operation."
+      ],
+      "units": [
+        {
+          "name": "Viking Cub Pack",
+          "description": "Viking Cubs meet on Tuesday nights from 7:00pm – 8:30pm at our Scout Hall.",
+          "email": "vikingcubpack@gmail.com",
+          "icon": "/images/cub-icon.png"
+        },
+        {
+          "name": "Celt Cub Pack",
+          "description": "Celt Cub Pack meet on Mondays from 7:00pm – 8:30pm at our Scout Hall.",
+          "email": "celtcubs@gmail.com",
+          "icon": "/images/cub-icon.png"
+        }
+      ],
+      "whatTheyDoTitle": "What do Cubs do?",
+      "whatTheyDoParagraphs": [
+        "Cub Scouts are aged 9 to 11 and typically meet once a week during school terms. At meetings they play team games and learn Scouting skills like hiking, camping, knots, first aid, cooking and more.",
+        "The real adventure is in the outdoors – hill walks up mountains, treasure hunts, one, two or three night camps, litter-picking, parading on Saint Patrick’s Day, hostel trips, and sometimes overseas trips."
+      ],
+      "whatTheyDoImage": "/images/cubs-1.jpg",
+      "activitiesTitle": "Cub Activities",
+      "activitiesParagraphs": [
+        "Our Cub Packs are very active and are always up to something. They normally go on camps 3–4 times a year and some day trips besides. They will also go on a Pack Holiday annually, usually about a week in length.",
+        "In between their camps, Cubs will do activities down in the hall, go on hikes, participate in events with the wider Group and much more. You can typically expect a Cub activity every 6 weeks."
+      ],
+      "activitiesImage": "/images/cubs-2.jpg",
+      "ctaTitle": "Interested in Joining our Cubs?"
+    },
+    {
+      "slug": "scouts",
+      "name": "Scouts",
+      "heading": "Scout Section",
+      "ageRange": "Ages 12–15",
+      "accentColor": "#00a794",
+      "icon": "/images/scout-icon.png",
+      "heroImage": "/images/scouts-hero.jpg",
+      "shortDescription": "The 3rd Scout Troop (ages 12–15) champions patrol leadership, mountain hiking, water activities, Phoenix Challenge, and 10-day Annual Camp.",
+      "introParagraphs": [
+        "The age group the whole movement was named for! Scouts run from aged 12 up until about 15, where they link to Venture Scouts.",
+        "A Group of Scouts is called a Troop. Within a Scout Troop you will find smaller Groups of 7–8 young people called Patrols, usually led by a Patrol Leader picked by the adult leadership team, and an Assistant Patrol Leader.",
+        "The Patrol is the lifeblood of the troop! Scouts will sleep and eat with their patrols, as well as do activities together."
+      ],
+      "units": [
+        {
+          "name": "3rd Scout Troop",
+          "description": "Donnybrook currently has one Scout section in operation, the 3rd Scout troop, who meet weekly on Thursdays from 7:45pm–9:30pm.",
+          "email": "3rdscoutsdonnybrook@gmail.com",
+          "icon": "/images/scout-icon.png"
+        }
+      ],
+      "whatTheyDoTitle": "What do Scouts do?",
+      "whatTheyDoParagraphs": [
+        "They typically meet once a week during school terms, and sometimes during school holidays. At meetings they develop their leadership and life skills. They learn Scouting skills like hiking, hill-walking, camping, knots, first aid, cooking and more.",
+        "The real adventure is in the outdoors – mountain hiking, water-based activities, mini-expeditions, camps from one to fourteen nights in length, and community events that encourage active citizenship. Scouts love being in the outdoors."
+      ],
+      "whatTheyDoImage": "/images/scouts-1.jpg",
+      "activitiesTitle": "Scout Activities",
+      "activitiesParagraphs": [
+        "Our Scouts are always up to something depending on their interest! They normally go on camps 5–6 times a year and some day trips besides. They will also go on an Annual Camp in the summertime annually, usually about 10 days in length.",
+        "In between their camps, Scouts will do activities down in the hall, go on hikes, participate in events with the wider Group and much more. You can typically expect a Scout activity of some kind once a month."
+      ],
+      "activitiesImage": "/images/scouts-2.jpg",
+      "ctaTitle": "Interested in Joining our Scouts?"
+    },
+    {
+      "slug": "ventures",
+      "name": "Ventures",
+      "heading": "Ventures",
+      "ageRange": "Ages 15–18",
+      "accentColor": "#7413dc",
+      "icon": "/images/venture-icon.png",
+      "heroImage": "/images/ventures-hero.jpg",
+      "shortDescription": "Self-governing youth unit (ages 15–18) affectionately known as DVG—planning expeditions, community service, and international summer camps.",
+      "introParagraphs": [
+        "Ventures are from aged 15 up until their 18th birthday, where they age out and link to Rovers.",
+        "Venture Units are normally comprised of 15–20 young people, sometimes organised into Crews. Ventures are usually self-governing with an elected Executive that has a Chair, Treasurer, Secretary and EQM."
+      ],
+      "units": [
+        {
+          "name": "DVG (Donnybrook Venture Group)",
+          "description": "Affectionately known as DVG, Donnybrook Venture Group meets on Thursdays from 8:00pm–9:30pm.",
+          "email": "venturesdonnybrook@gmail.com",
+          "icon": "/images/venture-icon.png"
+        }
+      ],
+      "whatTheyDoTitle": "What Do Ventures Do?",
+      "whatTheyDoParagraphs": [
+        "Well, it’s up to them. Normally Ventures meet once weekly during school terms but a lot of their time is spent socialising and planning for the next adventures.",
+        "Ventures can get up to anything: mountain hiking, water-based activities, mini-expeditions, camps & expeditions from one night to ten nights in length, community service projects, hostel stays, and sometimes overseas trips. Venture Scouts love the social aspect of Scouting."
+      ],
+      "whatTheyDoImage": "/images/ventures-1.jpg",
+      "activitiesTitle": "Venture Activities",
+      "activitiesParagraphs": [
+        "Our Ventures are always up to something depending on their interest. They normally go on camps 5–6 times a year and some day trips besides. Ventures will often take on activities such as national events in smaller groups if they want to. They will also go on a Summer Expedition annually, usually about 14 days in length.",
+        "In between their camps, Ventures will do activities down in the hall, go on hikes, participate in events with the wider Group and much more. You can typically expect a Venture activity of some kind once a month."
+      ],
+      "activitiesImage": "/images/ventures-2.jpg",
+      "ctaTitle": "Interested in Joining our Ventures?"
+    },
+    {
+      "slug": "rovers",
+      "name": "Rovers",
+      "heading": "Rovers",
+      "ageRange": "Ages 18–26",
+      "accentColor": "#dd3333",
+      "icon": "/images/rover-icon.png",
+      "heroImage": "/images/rovers-hero.jpg",
+      "shortDescription": "One of the largest Rover Crews in Ireland (ages 18–26), combining ambitious expeditions, social projects, and Group leadership.",
+      "introParagraphs": [
+        "Rovers are aged 18–26. They tend to be more ad-hoc than the other sections but will still meet regularly.",
+        "Rovers will often form “crews” for specific projects or initiatives, which is a smaller group of Rovers."
+      ],
+      "units": [
+        {
+          "name": "DRC (Donnybrook Rover Crew)",
+          "description": "Donnybrook Rover Crew is one of the largest Groups of Rovers in Ireland and we have a long history of various events and initiatives.",
+          "email": "apply@donnybrookleaders.com",
+          "icon": "/images/rover-icon.png"
+        }
+      ],
+      "whatTheyDoTitle": "What do Rovers do?",
+      "whatTheyDoParagraphs": [
+        "Whatever they want! Hike, social projects, camping, swimming… the adventure is up to you."
+      ],
+      "whatTheyDoImage": "/images/rovers-1.jpg",
+      "activitiesTitle": "Rover Activities",
+      "activitiesParagraphs": [
+        "Many of our Rovers are also Scouters within the Group, so Rovering works around their Section schedules. With Rovers you can expect ad-hoc events about once a month or so."
+      ],
+      "activitiesImage": "/images/rovers-2.jpg",
+      "ctaTitle": "Interested in Joining our Rovers?"
+    }
+  ],
+  "news": [
+    {
+      "title": "Spirit of Scouting Award Nomination",
+      "tag": "Youth Awards",
+      "summary": "A massive congratulations to Rossa Moore, Venture Scout and dedicated Beaver Leader, on being nominated for the Spirit of Scouting Award at the Scout Province Youth Awards.",
+      "link": "https://www.instagram.com/p/Dfne5CxMUH4/",
+      "image": "/images/hero-about.jpg"
+    },
+    {
+      "title": "Scouts Conquer Lugnaquilla",
+      "tag": "Scouts",
+      "summary": "Massive well done to our Scouts section for conquering Lugnaquilla! An incredible way to welcome everyone back and build stronger bonds across the team.",
+      "link": "https://www.instagram.com/p/DecgozsDJFh/",
+      "image": "/images/scouts-1.jpg"
+    },
+    {
+      "title": "2026 Group Link Ceremony & 100th Year",
+      "tag": "Centenary",
+      "summary": "We held our 2026 Group Link Ceremony welcoming returning scouts and new linkers. As we look ahead to our historic 100th year, an action-packed calendar awaits.",
+      "link": "https://www.instagram.com/p/DeKgMIzjNHN/",
+      "image": "/images/hero-home.jpg"
+    },
+    {
+      "title": "Leaders Away Day & Centenary Planning",
+      "tag": "Leaders",
+      "summary": "Our Leaders came together to prepare for the year ahead, share ideas, and plan exciting events for our upcoming Centenary celebrations.",
+      "link": "https://www.instagram.com/p/DdCWSkaDKz5/",
+      "image": "/images/hero-volunteering.jpg"
+    },
+    {
+      "title": "Ventures at Gilwell Park — SummerEx",
+      "tag": "Ventures",
+      "summary": "Our Ventures had a fantastic time at Gilwell Park for SummerEx, enjoying Central London, Paintball, Thorpe Park, and Aqua Park.",
+      "link": "https://www.instagram.com/p/Dcwj7JgDI1x/",
+      "image": "/images/ventures-2.jpg"
+    },
+    {
+      "title": "Phoenix Challenge — Silver Standard 4 Years Running",
+      "tag": "Scouts",
+      "summary": "Congratulations to our patrol who achieved Silver standard for 4 years running at the Phoenix Challenge in Castle Saunderson!",
+      "link": "https://www.instagram.com/p/DcHaSPWiF26/",
+      "image": "/images/scouts-2.jpg"
+    },
+    {
+      "title": "Scouts Summer Camp in IOAC Wexford",
+      "tag": "Summer Camp",
+      "summary": "Summer Camp season saw the Scouts have an absolute ball at the IOAC in Wexford with great activities, sitebuilding, and memories made.",
+      "link": "https://www.instagram.com/p/Db2zAhkCGFA/",
+      "image": "/images/cubs-2.jpg"
+    },
+    {
+      "title": "Red Ties Crew Summits Kilimanjaro",
+      "tag": "Expedition",
+      "summary": "The Red Ties crew all summitted Kilimanjaro safely! What a crew, what great weather, and what an unforgettable achievement.",
+      "link": "https://www.instagram.com/p/DamvBMqiL1m/",
+      "image": "/images/rovers-1.jpg"
+    }
+  ]
+}

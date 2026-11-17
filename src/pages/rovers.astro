@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionDetail from '../components/SectionDetail.astro';
+import siteData from '../data/siteData.json';
+
+const section = siteData.sections.find((s) => s.slug === 'rovers')!;
+---
+
+<Layout
+  title={`${section.name} (${section.ageRange}) – ${siteData.group.name}`}
+  description={section.shortDescription}
+>
+  <SectionDetail section={section} />
+</Layout>

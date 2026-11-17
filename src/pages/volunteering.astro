@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import siteData from '../data/siteData.json';
+---
+
+<Layout
+  title={`Volunteering – ${siteData.group.name}`}
+  description="Our Group is entirely volunteer led. Find out how to join Donnybrook Scout Group as an adult volunteer—full training provided and no prior experience required."
+>
+  <Hero
+    title="Volunteering With Us"
+    subtitle="Full training is provided and no prior Scouting experience is required."
+    eyebrow="100% Volunteer Led"
+    image="/images/hero-volunteering.jpg"
+    minHeight="360px"
+  />
+
+  <section class="section">
+    <div class="container volunteer-content">
+      <div class="volunteer-prose">
+        <span class="section-eyebrow">Community &amp; Leadership</span>
+        <h2>Make a Lasting Impact in Donnybrook</h2>
+        <p>
+          Our Group is entirely volunteer led and joining the Group as an adult is a great way to
+          connect to the community.
+        </p>
+        <p>
+          Scouting gives an incredible opportunity to work with young people in the community who
+          are aged 6 upwards. This opportunity will not only allow you to help develop the future
+          of these young people and their future contribution to your area, but will also be a lot
+          of fun.
+        </p>
+        <p>
+          If you have a passion for the outdoors or if you see a healthy and active lifestyle as
+          essential to a happy life, Scouting is a great opportunity to instill those values in the
+          young people you work with.
+        </p>
+        <p>
+          One of Scouting’s main goals is also to instill community spirit and leave the world a
+          little better than you found it.
+        </p>
+        <p>
+          There is a very close network of adult volunteers already working in the Group that will
+          help you develop and integrate socially when you join. Full training is provided and no
+          prior experience is required.
+        </p>
+        <p class="volunteer-cta-copy">
+          To discuss your options, please go to our{' '}
+          <a href="/join-us"><strong>Join Us Page</strong></a> and get in touch – we’ll take it from
+          there.
+        </p>
+        <div class="volunteer-actions">
+          <a href="/join-us" class="btn btn-red btn-lg">Apply as an Adult Volunteer</a>
+          <a href={`mailto:${siteData.group.emails.apply}`} class="btn btn-outline-dark btn-lg">
+            Email {siteData.group.emails.apply}
+          </a>
+        </div>
+      </div>
+
+      <div class="volunteer-highlights">
+        <div class="card highlight-box">
+          <div class="card-body">
+            <h3>No Prior Experience Needed</h3>
+            <p>
+              Whether you enjoy hiking, administration, DIY at the hall, or weekly youth
+              programmes, full Scouting Ireland training and Garda vetting support are provided.
+            </p>
+          </div>
+        </div>
+        <div class="card highlight-box">
+          <div class="card-body">
+            <h3>Flexible Ways to Help</h3>
+            <p>
+              Support a Beaver Colony, Cub Pack, Scout Troop, or Venture Crew weekly, or help with
+              Group Council, fundraising, equipment, and hall upkeep.
+            </p>
+          </div>
+        </div>
+        <div class="card highlight-box">
+          <div class="card-body">
+            <h3>Waiting List Preference</h3>
+            <p>
+              Families who offer to get involved as volunteers receive preference on our Waiting
+              List, helping us open up more youth places across Dublin 4 and 6.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Volunteer Life</span>
+        <h2>Our Leaders in Action</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="/images/rovers-2.jpg" alt="Adult leaders and Rovers" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="/images/hero-home.jpg" alt="Scouts and leaders gathering" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="/images/volunteer-1.jpg" alt="Scouting leaders volunteering" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="/images/volunteer-2.jpg" alt="Outdoor camp leadership" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .volunteer-content {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  @media (min-width: 960px) {
+    .volunteer-content {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+
+  .volunteer-prose h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 1.1rem;
+  }
+
+  .volunteer-prose p {
+    font-size: 1.03rem;
+    line-height: 1.75;
+  }
+
+  .volunteer-cta-copy a {
+    color: var(--color-scout-red);
+    text-decoration: underline;
+  }
+
+  .volunteer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+  }
+
+  .volunteer-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .highlight-box {
+    border-left: 4px solid var(--color-scout-red);
+  }
+
+  .highlight-box h3 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .highlight-box p {
+    margin-bottom: 0;
+    font-size: 0.93rem;
+    color: var(--color-text-muted);
+  }
+</style>

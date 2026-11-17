@@ -1,16 +1,516 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import SectionCard from '../components/SectionCard.astro';
+import siteData from '../data/siteData.json';
+
+const mainAnnouncement = siteData.announcements[0];
+const centenaryAnnouncement = siteData.announcements[1];
+
+const scheduleMap: Record<string, string> = {
+  beavers: 'Wednesdays & Thursdays, 6:30pm – 7:30pm',
+  cubs: 'Mondays & Tuesdays, 7:00pm – 8:30pm',
+  scouts: 'Thursdays, 7:45pm – 9:30pm',
+  ventures: 'Thursdays, 8:00pm – 9:30pm',
+  rovers: 'Monthly & project-based crews',
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title={`${siteData.group.name} – ${siteData.group.tagline}`}
+  transparentHeader={true}
+>
+  <!-- Hero Section -->
+  <section class="home-hero">
+    <img src="/images/hero-home.jpg" alt="Donnybrook Scout Group" class="home-hero-bg" />
+    <div class="home-hero-overlay" aria-hidden="true"></div>
+
+    <div class="container home-hero-grid">
+      <div class="home-hero-copy">
+        <span class="hero-pill">Founded {siteData.group.founded} • {siteData.group.tagline}</span>
+        <h1>3rd/40th/41st Dublin<br />Donnybrook Scout Group</h1>
+        <p class="hero-lead">
+          One of the oldest continuously running Scout groups in Ireland, delivering outdoor adventure,
+          friendship, and skills for life to ~200 young people aged 6–26 in Dublin 4 &amp; Dublin 6.
+        </p>
+        <div class="hero-cta-row">
+          <a href="/join-us" class="btn btn-red btn-lg">Join Us</a>
+          <a href="/sections" class="btn btn-outline-white btn-lg">Explore Sections</a>
+          <a href="/volunteering" class="btn btn-outline-white btn-lg">Volunteer</a>
+        </div>
+      </div>
+
+      <aside class="announcement-card" aria-label="Featured Announcement">
+        {mainAnnouncement.image && (
+          <div class="announcement-emblem">
+            <img
+              src={mainAnnouncement.image}
+              alt="Beaver Scouts Oíche na hÓige"
+              width="120"
+              height="120"
+            />
+          </div>
+        )}
+        <span class="badge">{mainAnnouncement.badge}</span>
+        <h2>{mainAnnouncement.title}</h2>
+        <p class="announcement-desc">{mainAnnouncement.description}</p>
+        <ul class="announcement-details">
+          <li><strong>Date:</strong> {mainAnnouncement.date}</li>
+          <li><strong>Time:</strong> {mainAnnouncement.time}</li>
+          <li><strong>Location:</strong> {mainAnnouncement.location}</li>
+          <li><strong>Who:</strong> {mainAnnouncement.who}</li>
+        </ul>
+        <a
+          href={mainAnnouncement.ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary announcement-btn"
+        >
+          {mainAnnouncement.ctaLabel} &rarr;
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Signature 3-Column Feature Banners -->
+  <section class="feature-pillars" aria-label="Group Highlights">
+    <a href="/about" class="pillar pillar--purple">
+      <div class="pillar-inner">
+        <h2>About Us</h2>
+        <p>One of the oldest groups in Ireland, founded in 1927 and we have been scouting since.</p>
+        <span class="btn btn-outline-white">About Us</span>
+      </div>
+    </a>
+
+    <a href="/sections" class="pillar pillar--teal">
+      <div class="pillar-inner">
+        <h2>Our Sections</h2>
+        <p>The Group is composed of 7 sections in order of age: Beavers, Cubs, Scouts, Ventures and Rovers.</p>
+        <span class="btn btn-outline-white">Our Sections</span>
+      </div>
+    </a>
+
+    <a href="/join-us" class="pillar pillar--blue">
+      <div class="pillar-inner">
+        <h2>Join Us</h2>
+        <p>We are always looking for new members—fill in our application form and we will be in touch.</p>
+        <span class="btn btn-outline-white">Join Us</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- Centenary Callout Banner -->
+  <section class="section-sm centenary-strip">
+    <div class="container centenary-inner">
+      <div>
+        <span class="section-eyebrow">{centenaryAnnouncement.badge}</span>
+        <h2>{centenaryAnnouncement.title}</h2>
+        <p>{centenaryAnnouncement.description}</p>
+      </div>
+      <a href={centenaryAnnouncement.ctaUrl} class="btn btn-outline-dark">
+        {centenaryAnnouncement.ctaLabel}
+      </a>
+    </div>
+  </section>
+
+  <!-- Active Sections Overview -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Scouting From Age 6 to 26</span>
+        <h2>Our Active Sections</h2>
+        <p>
+          Donnybrook Scout Group runs 7 active units across 5 age sections at our Scout Hall on
+          Brookvale Road, Dublin 4.
+        </p>
+      </div>
+
+      <div class="sections-grid">
+        {siteData.sections.map((section) => (
+          <SectionCard
+            title={section.name}
+            ageRange={section.ageRange}
+            description={section.shortDescription}
+            href={`/sections/${section.slug}`}
+            icon={section.icon}
+            accentColor={section.accentColor}
+            scheduleSummary={scheduleMap[section.slug]}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Adventures & Social Updates -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">#AllTheRedTies in Action</span>
+        <h2>Recent Adventures &amp; Group News</h2>
+        <p>
+          Highlights from our weekly meetings, mountain hikes, Phoenix Challenge, Summer Camps, and
+          community events.
+        </p>
+      </div>
+
+      <div class="grid grid-4">
+        {siteData.news.map((item) => (
+          <article class="card news-card">
+            <div class="news-img-wrap">
+              <img src={item.image} alt={item.title} loading="lazy" />
+              <span class="news-tag">{item.tag}</span>
+            </div>
+            <div class="card-body news-body">
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="news-link"
+              >
+                View Post &rarr;
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="news-footer">
+        <a
+          href={siteData.group.social.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline-dark"
+        >
+          Follow @donnybrookscouts on Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteering & Scout Hall CTA -->
+  <section class="cta-strip">
+    <div class="container cta-strip-inner">
+      <div>
+        <h2>Get Involved With Donnybrook Scouts</h2>
+        <p>
+          Our Group is 100% volunteer led. Full training is provided—no prior experience required—or
+          enquire about hiring our Brookvale Road Scout Hall.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a href="/volunteering" class="btn btn-red btn-lg">Volunteer With Us</a>
+        <a href="/our-hall" class="btn btn-outline-white btn-lg">Our Scout Hall</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .home-hero {
+    position: relative;
+    padding-block: 4rem 4.5rem;
+    background-color: #162131;
+    color: #ffffff;
+    overflow: hidden;
+  }
+
+  .home-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 68% 27%;
+  }
+
+  .home-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(15, 23, 42, 0.84) 0%, rgba(15, 23, 42, 0.56) 100%);
+  }
+
+  .home-hero-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 960px) {
+    .home-hero-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+  }
+
+  .hero-pill {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    background-color: var(--color-scout-red);
+    color: #ffffff;
+    border-radius: var(--radius-pill);
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .home-hero-copy h1 {
+    color: #ffffff;
+    font-size: clamp(2rem, 4.3vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.14;
+    margin-bottom: 1.1rem;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero-lead {
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    max-width: 580px;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .announcement-card {
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--color-text);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-lg);
+    border-top: 5px solid var(--color-scout-red);
+  }
+
+  .announcement-emblem {
+    width: 88px;
+    height: 88px;
+    margin-bottom: 0.75rem;
+  }
+
+  .announcement-emblem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .announcement-card h2 {
+    font-size: 1.35rem;
+    margin-top: 0.65rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .announcement-desc {
+    font-size: 0.92rem;
+    color: var(--color-text);
+    margin-bottom: 0.9rem;
+  }
+
+  .announcement-details {
+    list-style: none;
+    padding: 0.85rem 1rem;
+    margin: 0 0 1.15rem;
+    background-color: #f8fafc;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    font-size: 0.88rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .announcement-btn {
+    width: 100%;
+  }
+
+  /* 3-Column Feature Pillars */
+  .feature-pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 860px) {
+    .feature-pillars {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .pillar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3.25rem 2rem;
+    color: #ffffff;
+    min-height: 265px;
+    position: relative;
+    transition: filter var(--transition), transform var(--transition);
+  }
+
+  .pillar:hover {
+    color: #ffffff;
+    filter: brightness(1.06);
+  }
+
+  .pillar--purple {
+    background-color: var(--color-purple);
+  }
+
+  .pillar--teal {
+    background-color: var(--color-teal);
+  }
+
+  .pillar--blue {
+    background-color: var(--color-blue);
+  }
+
+  .pillar-inner {
+    max-width: 340px;
+  }
+
+  .pillar h2 {
+    color: #ffffff;
+    font-size: 1.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar p {
+    color: rgba(255, 255, 255, 0.94);
+    font-size: 1rem;
+    margin-bottom: 1.35rem;
+  }
+
+  /* Centenary Strip */
+  .centenary-strip {
+    background-color: #fef2f2;
+    border-bottom: 1px solid #fecaca;
+  }
+
+  .centenary-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .centenary-inner h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .centenary-inner p {
+    margin-bottom: 0;
+    max-width: 760px;
+  }
+
+  @media (min-width: 768px) {
+    .centenary-inner {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  /* Sections Overview Grid */
+  .sections-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 640px) {
+    .sections-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sections-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  /* News Cards */
+  .news-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .news-img-wrap {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #e2e8f0;
+  }
+
+  .news-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  .news-card:hover .news-img-wrap img {
+    transform: scale(1.05);
+  }
+
+  .news-tag {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: rgba(15, 23, 42, 0.82);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-pill);
+  }
+
+  .news-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.25rem;
+  }
+
+  .news-body h3 {
+    font-size: 1.02rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .news-body p {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .news-link {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-scout-red);
+  }
+
+  .news-footer {
+    text-align: center;
+    margin-top: 2.25rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+</style>

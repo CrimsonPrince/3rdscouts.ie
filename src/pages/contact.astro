@@ -1,0 +1,292 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import siteData from '../data/siteData.json';
+---
+
+<Layout
+  title={`Contact Us – ${siteData.group.name}`}
+  description="Contact 3rd/40th/41st Dublin Donnybrook Scout Group: Group Leader, Waiting List, Section Leaders, and Scout Hall address on Brookvale Road, Dublin 4."
+>
+  <Hero
+    title="Contact Us"
+    subtitle="Get in touch with our Group Leader, membership team, or individual section leaders."
+    eyebrow="Brookvale Road, Dublin 4"
+    image="/images/hero-about.jpg"
+    minHeight="310px"
+  />
+
+  <!-- Direct Contact Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        <article class="card contact-card">
+          <div class="card-body">
+            <span class="badge">General Enquiries</span>
+            <h2>Group Leader</h2>
+            <p>
+              For general Group questions, governance enquiries, or historical information
+              including <em>All The Red Ties</em>.
+            </p>
+            <p class="contact-link">
+              <a href={`mailto:${siteData.group.emails.groupLeader}`}>
+                {siteData.group.emails.groupLeader}
+              </a>
+            </p>
+          </div>
+        </article>
+
+        <article class="card contact-card">
+          <div class="card-body">
+            <span class="badge">Membership</span>
+            <h2>Waiting List &amp; Joining</h2>
+            <p>
+              Questions about youth waiting lists, transfers, or joining our Group as an adult
+              volunteer.
+            </p>
+            <p class="contact-link">
+              <a href={`mailto:${siteData.group.emails.apply}`}>
+                {siteData.group.emails.apply}
+              </a>
+            </p>
+          </div>
+        </article>
+
+        <article class="card contact-card">
+          <div class="card-body">
+            <span class="badge">Location</span>
+            <h2>Our Scout Hall</h2>
+            <p>
+              {siteData.group.address}
+            </p>
+            <p class="contact-meta">
+              Close to the N11, Luas, and DART, with on-site parking for 10–12 cars.
+              <br />
+              CHY ID: {siteData.group.chyId}
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Leaders Directory & General Enquiry Form -->
+  <section class="section section-alt">
+    <div class="container contact-split">
+      <div>
+        <span class="section-eyebrow">Section Contacts</span>
+        <h2 class="directory-heading">Weekly Section Leaders</h2>
+        <p class="directory-intro">
+          Looking to contact a specific Beaver Colony, Cub Pack, Scout Troop, or Venture Unit?
+          Reach out directly below.
+        </p>
+
+        <div class="directory-list">
+          {siteData.units.map((unit) => (
+            <div class="directory-item">
+              <div>
+                <h3>
+                  <a href={`/sections/${unit.sectionSlug}`}>{unit.name}</a>
+                </h3>
+                <span class="directory-time">{unit.day} • {unit.time}</span>
+              </div>
+              <a href={`mailto:${unit.email}`} class="directory-email">
+                {unit.email}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="form-card">
+        <span class="badge">Send an Enquiry</span>
+        <h2 class="form-heading">Message the Group</h2>
+        <form
+          id="contact-enquiry-form"
+          class="form-grid"
+          data-form-type="contact"
+          data-endpoint={siteData.forms.appsScriptUrl}
+          data-mailto={siteData.group.emails.groupLeader}
+        >
+          <input
+            type="text"
+            name="_gotcha"
+            class="hp-field"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <div class="form-group">
+            <label class="form-label" for="contact-name">
+              Your Name <span class="form-required">*</span>
+            </label>
+            <input
+              id="contact-name"
+              name="Name"
+              type="text"
+              class="form-control"
+              placeholder="E.g. Jane Doe"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-email">
+              Email Address <span class="form-required">*</span>
+            </label>
+            <input
+              id="contact-email"
+              name="Email Address"
+              type="email"
+              class="form-control"
+              placeholder="E.g. jane@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-topic">
+              Topic <span class="form-required">*</span>
+            </label>
+            <select id="contact-topic" name="Topic" class="form-control" required>
+              <option value="General Enquiry">General Enquiry</option>
+              <option value="Waiting List / Joining">Waiting List / Joining</option>
+              <option value="Volunteering">Adult Volunteering</option>
+              <option value="Scout Hall Rental">Scout Hall Rental</option>
+              <option value="History / Alumni">Group History / Alumni</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-message">
+              Message <span class="form-required">*</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="Message"
+              class="form-control"
+              placeholder="How can we help?"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-red btn-lg submit-btn">Send Message</button>
+          <div class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { wireMailtoForm } from '../utils/mailtoForm';
+
+  wireMailtoForm(
+    'contact-enquiry-form',
+    'Website Enquiry',
+    'donnybrookgroupleader@gmail.com',
+    'message draft',
+    'contact'
+  );
+</script>
+
+<style>
+  .contact-card h2 {
+    margin-top: 0.7rem;
+    margin-bottom: 0.55rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+  }
+
+  .contact-link {
+    margin-bottom: 0;
+    font-weight: 700;
+    word-break: break-word;
+  }
+
+  .contact-meta {
+    margin-bottom: 0;
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+  }
+
+  .contact-split {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  @media (min-width: 960px) {
+    .contact-split {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+  }
+
+  .directory-heading {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    margin-bottom: 0.65rem;
+  }
+
+  .directory-intro {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .directory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .directory-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+  }
+
+  .directory-item h3 {
+    font-size: 1.02rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .directory-item h3 a {
+    color: var(--color-darker);
+  }
+
+  .directory-item h3 a:hover {
+    color: var(--color-scout-red);
+  }
+
+  .directory-time {
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
+  }
+
+  .directory-email {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    word-break: break-word;
+  }
+
+  .form-heading {
+    margin-top: 0.6rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.45rem;
+    text-transform: uppercase;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import siteData from '../data/siteData.json';
+---
+
+<Layout
+  title={`Our Scout Hall – ${siteData.group.name}`}
+  description="Our Scout Hall on Brookvale Road, Donnybrook, Dublin 4 has been our home since the 1950s. Learn about our facilities, accessibility, parking, and hall bookings."
+>
+  <Hero
+    title="Our Scout Hall"
+    subtitle="Brookvale Road, Donnybrook, Dublin 4 (D04 PV32) — our home since the 1950s."
+    eyebrow="Facilities & Hall Hire"
+    image="/images/hero-hall.png"
+    minHeight="360px"
+  />
+
+  <section class="section">
+    <div class="container hall-split">
+      <div class="hall-story">
+        <span class="section-eyebrow">Our Home in Dublin 4</span>
+        <h2>History &amp; Modern Facilities</h2>
+        <p>
+          Our Hall on Brookvale Road has been our home since the 1950s and has a storied history,
+          including use as a Dance Hall for many years in the 50s and 60s.
+        </p>
+        <p>
+          The original hall underwent extensive renovations in the 90s to add two meeting rooms,
+          several smaller storage spaces and the current kitchen, giving us a modern facility
+          enjoyed by all our members.
+        </p>
+        <p>
+          Our most recent additions have been our accessible toilet, completed in 2023, as well as
+          the widening of our gates to enable better emergency services access.
+        </p>
+        <p>
+          Our hall has a parking space outside, enough to hold 10–12 cars; with that and its
+          proximity to both the N11, Luas and the DART, and a short distance from Dublin City
+          Centre, it is a popular spot for other Groups and committees to visit and stay in.
+        </p>
+        <p>If you are interested in renting our hall, please contact us using the booking form.</p>
+
+        <div class="facility-tags">
+          <span class="badge">2 Meeting Rooms</span>
+          <span class="badge">Modern Kitchen</span>
+          <span class="badge">Accessible Toilet (2023)</span>
+          <span class="badge">10–12 Car Parking</span>
+          <span class="badge">Near N11, Luas &amp; DART</span>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <span class="badge">Hall Hire Enquiry</span>
+        <h2 class="booking-heading">Hall Booking Form</h2>
+        <form
+          id="hall-booking-form"
+          class="form-grid"
+          data-form-type="hall"
+          data-endpoint={siteData.forms.appsScriptUrl}
+          data-mailto={siteData.group.emails.groupLeader}
+        >
+          <input
+            type="text"
+            name="_gotcha"
+            class="hp-field"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <div class="form-group">
+            <label class="form-label" for="hall-name">
+              Your Name / Your Group's Name <span class="form-required">*</span>
+            </label>
+            <input
+              id="hall-name"
+              name="Name / Group Name"
+              type="text"
+              class="form-control"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="form-grid form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="hall-email">
+                Email Address <span class="form-required">*</span>
+              </label>
+              <input
+                id="hall-email"
+                name="Email Address"
+                type="email"
+                class="form-control"
+                placeholder="E.g. john@doe.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="hall-phone">
+                Phone Number <span class="form-required">*</span>
+              </label>
+              <input
+                id="hall-phone"
+                name="Phone Number"
+                type="tel"
+                class="form-control"
+                placeholder="E.g. 086 999 9999"
+                autocomplete="tel"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="hall-dates">
+              Dates you wish to book <span class="form-required">*</span>
+            </label>
+            <textarea
+              id="hall-dates"
+              name="Dates requested"
+              class="form-control"
+              maxlength="180"
+              required
+            ></textarea>
+            <span class="form-hint">Max 180 characters.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="hall-attendees">
+              Number of attendees <span class="form-required">*</span>
+            </label>
+            <input
+              id="hall-attendees"
+              name="Number of attendees"
+              type="text"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-red btn-lg submit-btn">Send Message</button>
+          <div class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Brookvale Road</span>
+        <h2>Inside &amp; Around Our Scout Hall</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="/images/hall-1.jpg" alt="Scout Hall exterior and grounds" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="/images/hall-2.jpg" alt="Scout Hall interior activities" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="/images/hall-3.jpg" alt="Scout Hall evening meeting" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="/images/hero-home.jpg" alt="Donnybrook Scouts at the hall" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { wireMailtoForm } from '../utils/mailtoForm';
+
+  wireMailtoForm(
+    'hall-booking-form',
+    'Scout Hall Booking Enquiry',
+    'donnybrookgroupleader@gmail.com',
+    'hall booking enquiry',
+    'hall'
+  );
+</script>
+
+<style>
+  .hall-split {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  @media (min-width: 960px) {
+    .hall-split {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+  }
+
+  .hall-story h2 {
+    font-size: clamp(1.6rem, 3vw, 2.15rem);
+    margin-bottom: 1rem;
+  }
+
+  .hall-story p {
+    font-size: 1.02rem;
+    line-height: 1.72;
+  }
+
+  .facility-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .booking-heading {
+    margin-top: 0.6rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.45rem;
+    text-transform: uppercase;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+</style>

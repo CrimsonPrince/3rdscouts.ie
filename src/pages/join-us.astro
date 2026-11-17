@@ -1,0 +1,437 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import siteData from '../data/siteData.json';
+---
+
+<Layout
+  title={`Join Us – ${siteData.group.name}`}
+  description="Apply to join 3rd/40th/41st Dublin Donnybrook Scout Group as a youth member or adult volunteer, or check on our waiting list."
+>
+  <Hero
+    title="Joining Our Group"
+    subtitle="Open to young people aged 6–26 and adult volunteers in Dublin 4 & Dublin 6."
+    eyebrow="Membership & Waiting List"
+    image="/images/hero-join.png"
+    minHeight="320px"
+  />
+
+  <section class="section-sm">
+    <div class="container join-intro">
+      <p>
+        If you are interested in yourself or your child joining us, please fill in the relevant form
+        below.
+      </p>
+      <p>
+        We are a volunteer-run Group and we cannot always meet demand for places for young people;
+        we appreciate your patience in this regard.
+      </p>
+      <p class="waiting-list-note">
+        If you have any queries on your place in the waiting list, please email us directly on{' '}
+        <a href={`mailto:${siteData.group.emails.apply}`}>{siteData.group.emails.apply}</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-slate">
+    <div class="container">
+      <div class="forms-layout">
+        <!-- Youth Member Applications -->
+        <div class="form-card">
+          <div class="form-card-header">
+            <span class="badge">Ages 6–26</span>
+            <h2>Youth Member Applications</h2>
+            <p>
+              Register your child for Beavers, Cubs, Scouts, Ventures, or Rovers.
+            </p>
+          </div>
+
+          <form
+            id="youth-application-form"
+            class="form-grid"
+            data-form-type="youth"
+            data-endpoint={siteData.forms.appsScriptUrl}
+            data-mailto={siteData.group.emails.apply}
+          >
+            <input
+              type="text"
+              name="_gotcha"
+              class="hp-field"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+            <div class="form-grid form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="youth-parent-name">
+                  Parent Name <span class="form-required">*</span>
+                </label>
+                <input
+                  id="youth-parent-name"
+                  name="Parent Name"
+                  type="text"
+                  class="form-control"
+                  placeholder="E.g. John Doe"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="youth-email">
+                  Email Address <span class="form-required">*</span>
+                </label>
+                <input
+                  id="youth-email"
+                  name="Email Address"
+                  type="email"
+                  class="form-control"
+                  placeholder="E.g. john@doe.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-grid form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="youth-phone">
+                  Mobile Phone Number <span class="form-required">*</span>
+                </label>
+                <input
+                  id="youth-phone"
+                  name="Mobile Phone Number"
+                  type="tel"
+                  class="form-control"
+                  placeholder="E.g. 086 999 9999"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="youth-address">
+                  Home Address <span class="form-required">*</span>
+                </label>
+                <input
+                  id="youth-address"
+                  name="Home Address"
+                  type="text"
+                  class="form-control"
+                  placeholder="99 Brookvale Road"
+                  autocomplete="street-address"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-grid form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="child-first-name">
+                  Your Child's First Name <span class="form-required">*</span>
+                </label>
+                <input
+                  id="child-first-name"
+                  name="Child's First Name"
+                  type="text"
+                  class="form-control"
+                  placeholder="E.g. John"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="child-last-name">
+                  Your Child's Last Name <span class="form-required">*</span>
+                </label>
+                <input
+                  id="child-last-name"
+                  name="Child's Last Name"
+                  type="text"
+                  class="form-control"
+                  placeholder="E.g. Doe"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="child-dob">
+                Your Child's Date Of Birth <span class="form-required">*</span>
+              </label>
+              <input
+                id="child-dob"
+                name="Child's Date Of Birth"
+                type="date"
+                class="form-control"
+                required
+              />
+              <span class="form-hint">
+                Minimum age to join Scouting is 6. If your child is younger than 6, we will keep
+                their details on file and contact when they are of age and a place is available.
+              </span>
+            </div>
+
+            <div class="form-grid form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="youth-hear">
+                  How did you hear of us? <span class="form-required">*</span>
+                </label>
+                <textarea
+                  id="youth-hear"
+                  name="How did you hear of us"
+                  class="form-control"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="youth-connection">
+                  Have you got any connection to the Group?
+                </label>
+                <textarea
+                  id="youth-connection"
+                  name="Connection to the Group"
+                  class="form-control"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="youth-medical">
+                Any medical conditions or other considerations that we should know?
+              </label>
+              <textarea
+                id="youth-medical"
+                name="Medical or other considerations"
+                class="form-control"
+              ></textarea>
+              <span class="form-hint">
+                Donnybrook Scout Group is welcome to ALL regardless of race, gender, religion, or
+                ability.
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="youth-volunteer">
+                Would you be willing to volunteer with us? <span class="form-required">*</span>
+              </label>
+              <textarea
+                id="youth-volunteer"
+                name="Willing to volunteer"
+                class="form-control"
+                placeholder="Families who offer to get involved get preference on our Waiting List. Our Group is entirely volunteer-run."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-red btn-lg submit-btn">
+              Submit Application
+            </button>
+            <div class="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <!-- Adult Applications -->
+        <div class="form-card">
+          <div class="form-card-header">
+            <span class="badge">Adult Volunteers</span>
+            <h2>Adult Applications</h2>
+            <p>
+              Full training is provided and no prior Scouting experience is required.
+            </p>
+          </div>
+
+          <form
+            id="adult-application-form"
+            class="form-grid"
+            data-form-type="adult"
+            data-endpoint={siteData.forms.appsScriptUrl}
+            data-mailto={siteData.group.emails.apply}
+          >
+            <input
+              type="text"
+              name="_gotcha"
+              class="hp-field"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+            <div class="form-grid form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="adult-name">
+                  Your Name <span class="form-required">*</span>
+                </label>
+                <input
+                  id="adult-name"
+                  name="Name"
+                  type="text"
+                  class="form-control"
+                  placeholder="E.g. John"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="adult-email">
+                  Email Address <span class="form-required">*</span>
+                </label>
+                <input
+                  id="adult-email"
+                  name="Email Address"
+                  type="email"
+                  class="form-control"
+                  placeholder="E.g. john@doe.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="adult-phone">
+                Mobile Number <span class="form-required">*</span>
+              </label>
+              <input
+                id="adult-phone"
+                name="Mobile Number"
+                type="tel"
+                class="form-control"
+                placeholder="E.g. 086 999 9999"
+                autocomplete="tel"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="adult-why">
+                Why do you want to join us? <span class="form-required">*</span>
+              </label>
+              <textarea
+                id="adult-why"
+                name="Why do you want to join"
+                class="form-control"
+                placeholder="Enter your message..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-grid form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="adult-experience">
+                  Previous experience relevant to Scouting <span class="form-required">*</span>
+                </label>
+                <textarea
+                  id="adult-experience"
+                  name="Previous experience"
+                  class="form-control"
+                  maxlength="180"
+                  required
+                ></textarea>
+                <span class="form-hint">Max 180 characters.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="adult-availability">
+                  Availability / commitment level <span class="form-required">*</span>
+                </label>
+                <textarea
+                  id="adult-availability"
+                  name="Availability"
+                  class="form-control"
+                  maxlength="180"
+                  required
+                ></textarea>
+                <span class="form-hint">Max 180 characters.</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg submit-btn">
+              Send Message
+            </button>
+            <div class="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { wireMailtoForm } from '../utils/mailtoForm';
+
+  wireMailtoForm(
+    'youth-application-form',
+    'Youth Member Application',
+    'apply@donnybrookleaders.com',
+    'application summary',
+    'youth'
+  );
+  wireMailtoForm(
+    'adult-application-form',
+    'Adult Volunteer Application',
+    'apply@donnybrookleaders.com',
+    'application summary',
+    'adult'
+  );
+</script>
+
+<style>
+  .join-intro {
+    max-width: 780px;
+    text-align: center;
+  }
+
+  .join-intro p {
+    font-size: 1.05rem;
+  }
+
+  .waiting-list-note {
+    margin-bottom: 0;
+    font-weight: 700;
+    color: var(--color-darker);
+  }
+
+  .waiting-list-note a {
+    color: var(--color-scout-red);
+    text-decoration: underline;
+  }
+
+  .forms-layout {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .forms-layout {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+  }
+
+  .form-card-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .form-card-header h2 {
+    margin-top: 0.6rem;
+    margin-bottom: 0.35rem;
+    font-size: 1.45rem;
+    text-transform: uppercase;
+  }
+
+  .form-card-header p {
+    margin-bottom: 0;
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+  }
+
+  .submit-btn {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+</style>

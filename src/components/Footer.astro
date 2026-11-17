@@ -1,0 +1,242 @@
+---
+import siteData from '../data/siteData.json';
+---
+
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-col">
+      <h3 class="footer-heading">About Us</h3>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">{siteData.group.footerSummary}</p>
+      <p class="footer-tagline">
+        <span class="red-ties-pill">All the Red Ties</span>
+      </p>
+      <div class="social-links">
+        <a
+          href={siteData.group.social.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-btn"
+          aria-label="Follow Donnybrook Scouts on Facebook"
+          title="Facebook"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 9H16V6h-2.5C11.57 6 10 7.57 10 9.5V11H8v3h2v7h3v-7h2.3l.7-3H13v-1.5c0-.28.22-.5.5-.5z"/>
+          </svg>
+        </a>
+        <a
+          href={siteData.group.social.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-btn"
+          aria-label="Follow Donnybrook Scouts on Instagram"
+          title="Instagram"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a
+          href={`mailto:${siteData.group.emails.apply}`}
+          class="social-btn"
+          aria-label="Email Membership Enquiries"
+          title="Email us"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Explore</h3>
+      <div class="footer-divider"></div>
+      <div class="footer-links-grid">
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/sections">All Sections</a></li>
+          <li><a href="/volunteering">Volunteering</a></li>
+          <li><a href="/our-hall">Our Scout Hall</a></li>
+          <li><a href="/join-us">Join Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+        <ul class="footer-links">
+          <li><a href="/sections/beavers">Beavers (6–8)</a></li>
+          <li><a href="/sections/cubs">Cubs (9–11)</a></li>
+          <li><a href="/sections/scouts">Scouts (12–15)</a></li>
+          <li><a href="/sections/ventures">Ventures (15–18)</a></li>
+          <li><a href="/sections/rovers">Rovers (18–26)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Our Group &amp; Hall</h3>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">
+        <strong>{siteData.group.name}</strong><br />
+        {siteData.group.address}
+      </p>
+      <p class="footer-copy">
+        Founded {siteData.group.founded}<br />
+        CHY ID: {siteData.group.chyId}
+      </p>
+      <p class="footer-copy">
+        Group Leader: <a href={`mailto:${siteData.group.emails.groupLeader}`}>{siteData.group.emails.groupLeader}</a><br />
+        Waiting List: <a href={`mailto:${siteData.group.emails.apply}`}>{siteData.group.emails.apply}</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; {new Date().getFullYear()} {siteData.group.name}. All rights reserved.</p>
+      <p>Scouting Ireland • World Organisation of the Scout Movement (WOSM)</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: #242933;
+    color: #cbd5e1;
+    font-size: 0.92rem;
+  }
+
+  .footer-main {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    padding-block: 3.5rem 2.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-main {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .footer-heading {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.65rem;
+  }
+
+  .footer-divider {
+    width: 34px;
+    height: 3px;
+    background-color: var(--color-scout-red);
+    margin-bottom: 1.15rem;
+    border-radius: 2px;
+  }
+
+  .footer-copy {
+    color: #cbd5e1;
+    line-height: 1.65;
+    margin-bottom: 0.9rem;
+  }
+
+  .footer-copy a {
+    color: #f8fafc;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .footer-copy a:hover {
+    color: #fca5a5;
+  }
+
+  .red-ties-pill {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    background: rgba(221, 51, 51, 0.2);
+    border: 1px solid rgba(221, 51, 51, 0.5);
+    color: #fecaca;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+  }
+
+  .social-btn:hover {
+    background-color: var(--color-scout-red);
+    border-color: var(--color-scout-red);
+    color: #ffffff;
+  }
+
+  .footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .footer-links a {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+  }
+
+  .footer-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    background-color: #181c23;
+    padding-block: 1.15rem;
+    font-size: 0.84rem;
+    color: #94a3b8;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    justify-content: space-between;
+  }
+
+  .footer-bottom-inner p {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom-inner {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+</style>

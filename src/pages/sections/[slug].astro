@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionDetail, { type SectionItem } from '../../components/SectionDetail.astro';
+import siteData from '../../data/siteData.json';
+
+export function getStaticPaths() {
+  return siteData.sections.map((section) => ({
+    params: { slug: section.slug },
+    props: { section },
+  }));
+}
+
+interface Props {
+  section: SectionItem;
+}
+
+const { section } = Astro.props;
+---
+
+<Layout
+  title={`${section.name} (${section.ageRange}) – ${siteData.group.name}`}
+  description={section.shortDescription}
+>
+  <SectionDetail section={section} />
+</Layout>
